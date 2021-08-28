@@ -3,7 +3,10 @@ import session from 'express-session';
 import UserService from "./user-service";
 
 const app = express();
-app.use(session({secret: 'keyboard cat', cookie: {maxAge: 60000}}))
+app.use(session({
+    secret: 'keyboard cat', cookie: {maxAge: 60000}, resave: true,
+    saveUninitialized: true
+}))
 
 app.get('/', async (req, res) => {
     req.session.views = req.session.views ? req.session.views + 1 : 1;
