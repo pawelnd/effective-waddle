@@ -1,11 +1,13 @@
 import {UserDto} from './UserDto'
-import {UserRepository} from "./user-repository";
+import {getUser} from "./get-user";
+
 
 class UserService {
-    private repository = new UserRepository();
 
     public async getUser(): Promise<UserDto> {
-        return this.repository.getUser();
+        let user = await getUser();
+        user.password = '';
+        return user;
     }
 }
 

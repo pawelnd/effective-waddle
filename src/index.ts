@@ -1,6 +1,7 @@
 import express from 'express';
 import session from 'express-session';
 import UserService from "./user-service";
+import * as types from './custom_typings';
 
 const app = express();
 app.use(session({
